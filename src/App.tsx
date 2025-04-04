@@ -1,17 +1,35 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function App() {
     const [count, setCount] = useState(1)
-    function handlesumbit(){return 'Vladi e po-dobur na 1000% ot Timona'}
-       const [username,setUsername]=useState('')
-    return (<div>Hello Timi
-       <input onChange={(e)=> setUsername(e.target.value)}/>
-       <button onClick={()=>setCount((count)=>count+ 1)}>count is {count}</button>
+    function handlesumbit() { return 'Valkata e gotin' }
+    const [username, setUsername] = useState('')
+    const [error, setError] = useState('')
+    useEffect(() => {
+        if (username.length < 3) setError('cringe')
+        else setError('')
+    }, [username])
 
-        {handlesumbit()}
+    return (
+        <div>Hello Timi
+            <input onChange={(e) => setUsername(e.target.value)} />
+            <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
+            <button 
+      style={{
+        backgroundColor: 'green',
+        color: 'white',
+        padding: '10px 20px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+      }}>vladi e dobur
+      
+      </button>
 
-{username}
+            {handlesumbit()}
 
+            {username}
+            {error}
 
 
 
@@ -352,5 +370,6 @@ export default function App() {
 
 
 
-    </div>)
+
+        </div>)
 }
